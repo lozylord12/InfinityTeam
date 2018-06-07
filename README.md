@@ -10,7 +10,7 @@
 **Start contributing:** Make sure you read [SETUP.md](https://github.com/lozylord12/InfinityTeam) when you start working on this project. Basically: Fork this repository and contribute back using pull requests to the master branch.
 Easy starting points are also reviewing [pull requests](https://github.com/owncloud/android/pulls) and working on [junior jobs](https://github.com/owncloud/android/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22).
 
-**IRC channel:** [#owncloud-android](https://webchat.freenode.net/?channels=owncloud-android) on freenode IRC
+**IRC channel:** [#Infinity](https://github.com/lozylord12/InfinityTeam) on freenode IRC
 
 **License:** [GPLv2](https://github.com/lozylord12/InfinityTeam)
 
