@@ -1,4 +1,4 @@
-# [ownCloud](https://github.com/lozylord12/InfinityTeam) Android app
+# [Infinity Team ©](https://github.com/lozylord12/InfinityTeam) SoundWaves Sound
 
 <a href="https://play.google.com/store/apps/details?id=com.owncloud.android"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="75"></a><a href="https://f-droid.org/packages/com.owncloud.android/"><img src="https://f-droid.org/badge/get-it-on.png" height="75"></a>
 
