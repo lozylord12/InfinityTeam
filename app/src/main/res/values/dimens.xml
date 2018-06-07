@@ -53,7 +53,7 @@
     <dimen name="slide1_text_size_2">15sp</dimen>
 
 
-    <dimen name="slide2_image_height">350dp</dimen>
+    <dimen name="slide2_image_height">330dp</dimen>
     <dimen name="slide2_text_size_1">30sp</dimen>
     <dimen name="slide2_text_size_2">16sp</dimen>
     <dimen name="slide2_text_view_padding">40dp</dimen>
@@ -114,4 +114,12 @@
     <dimen name="dialog_congratulation_space_top">40dp</dimen>
     <dimen name="dialog_congratulation_space_text_button">50dp</dimen>
     <dimen name="dialog_congratulation_title_size">30sp</dimen>
+
+
+
+    <!--height, width button on tab bar-->
+
+    <dimen name="height_width_button_tab_bar">30dp</dimen>
+
+
 </resources>

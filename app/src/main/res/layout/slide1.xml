@@ -22,7 +22,8 @@
             android:text="@string/slide_1_title"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide1_text_size_FuBiz"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="serif"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +34,8 @@
             android:text="@string/slide_1_desc"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide1_text_size_1" />
+            android:textSize="@dimen/slide1_text_size_1"
+            android:fontFamily="serif"/>
 
         <TextView
             android:layout_width="wrap_content"

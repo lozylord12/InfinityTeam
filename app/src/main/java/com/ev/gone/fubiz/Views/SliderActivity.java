@@ -1,6 +1,5 @@
 package com.ev.gone.fubiz.Views;
 
-import android.animation.ObjectAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,16 +11,13 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,21 +31,11 @@ public class SliderActivity extends AppCompatActivity {
     private Button Skip, Next;
     private LaunchManager LaunchManager;
 
-//    ImageView imageView;
+    // ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-//        ImageView imageview = (ImageView)findViewById(R.id.image_test);
-//
-//        ObjectAnimator imageViewObjectAnimator = ObjectAnimator.ofFloat(imageview ,
-//                "rotation", 0f, 360f);
-//        imageViewObjectAnimator.setRepeatCount(ObjectAnimator.INFINITE);
-//        imageViewObjectAnimator.setRepeatMode(ObjectAnimator.RESTART);
-//        imageViewObjectAnimator.setInterpolator(new AccelerateInterpolator());
-//        imageViewObjectAnimator.start();
 
         // Checking for first time launch - before calling setContentView()
         LaunchManager = new LaunchManager(this);
@@ -66,13 +52,13 @@ public class SliderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_slider_active);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         Skip = (Button) findViewById(R.id.btn_skip);
         Next = (Button) findViewById(R.id.btn_next);
 
 
         // layouts of all welcome sliders
-        // add few more layouts if you want
         layouts = new int[]{
                 R.layout.slide1,
                 R.layout.slide2,
@@ -136,10 +122,8 @@ public class SliderActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-
-
         LaunchManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(this, Loading.class));
+        startActivity(new Intent(this, LoadingActivity.class));
         finish();
     }
 

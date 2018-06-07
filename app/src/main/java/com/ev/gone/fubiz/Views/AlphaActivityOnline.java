@@ -1,39 +1,44 @@
+/**
+ * Created by gone on 2/24/18.
+ */
+
 package com.ev.gone.fubiz.Views;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-import com.ev.gone.fubiz.R;
 import android.animation.ObjectAnimator;
 import android.app.Service;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ev.gone.fubiz.R;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AlphaActivityOffline extends AppCompatActivity {
 
-    Button no_wifi;
+public class AlphaActivityOnline extends AppCompatActivity {
+
     Button btn_backtohome;
     Button setting;
     Button time_setting;
-    Button list_songs_downloaded;
-
     Button off_line;
+
     Button alpha_ic;
     Button volume_ocean;
     boolean isPlay = false;
@@ -48,9 +53,12 @@ public class AlphaActivityOffline extends AppCompatActivity {
     boolean isPiano_rd = true;
 
     MediaPlayer mPlayers;
-
     Boolean wifiConnected;
     Boolean mobileConnected;
+
+    ArrayList<File> mySongs = new ArrayList<File>();
+    int i;
+    String[] items;
 
     //extra classes
     private static class TimerStatus {
@@ -65,7 +73,7 @@ public class AlphaActivityOffline extends AppCompatActivity {
     TextView textViewTime;
 
     //Objects and variables
-    int status = TimerStatus.STOPPED;
+    int status = AlphaActivityOnline.TimerStatus.STOPPED;
     ObjectAnimator smoothAnimation;
 
     @BindView(R.id.countdown_btn)
@@ -73,32 +81,58 @@ public class AlphaActivityOffline extends AppCompatActivity {
 
     private long timeCountInMilliSeconds;
     private CountDownTimer countDownTimer;
+
     private Toast mToastToShow;
     private TextView tvTest;
+
     MediaPlayer mPlayerOcean = new MediaPlayer();
     MediaPlayer mPlayerAlpha = new MediaPlayer();
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alpha_offline);
+        setContentView(R.layout.activity_alpha_main);
 
-//        no_wifi = (Button) findViewById(R.id.no_wifi);
-//        no_wifi.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent redirect = new Intent(AlphaActivityOffline.this, AlphaActivityOnline.class);
-////                timeCountInMilliSeconds
-////                stopCountDownTimer();
-//                startActivityForResult(redirect,2);
-//
-//            }
-//        });
+        //        checkConnection();
+        //
+        //        mPlayers = new MediaPlayer();
+        //        mPlayerOcean = MediaPlayer.create(this, R.raw.oceansounds);
+        //        mPlayerAlpha = MediaPlayer.create(this, R.raw.alpha10dot0hz);
+        //
+        //        tvTest = findViewById(R.id.tvTest_alpha);
+        //        mySongs = new ArrayList<File>();
+        //
+        //        final ArrayList<File> mySongs = findSongs(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC));
+        //        items = new String[mySongs.size()];
+        //
+        //        Intent intent = getIntent();
+        //        tvTest.setText(intent.getStringExtra("push_song"));
+        //
+        //
+        //        final String str  = intent.getStringExtra("push_url");
+        //        this.mySongs = (ArrayList) intent.getParcelableArrayListExtra("song_list");
+        //        i =  intent.getIntExtra("pos", 0);
+        //        Uri uri = Uri.parse(mySongs.get(i).toString());
+        //
+        //        if (str != null){
+        //            try{
+        //
+        //                mPlayers.setDataSource(str);
+        //                mPlayers.prepare();
+        //
+        //            }catch (IOException e){
+        //                Log.v("lost data", e.getMessage());
+        //            }
+        //        }else {
+        //            mPlayers = MediaPlayer.create(getApplicationContext(), uri);
+        //        }
+        //        alpha_ic = (Button) findViewById(R.id.alpha_ic);
+
 
         checkConnection();
-
         mPlayers = new MediaPlayer();
         mPlayerOcean = MediaPlayer.create(this, R.raw.oceansounds);
         mPlayerAlpha = MediaPlayer.create(this, R.raw.alpha10dot0hz);
@@ -107,11 +141,13 @@ public class AlphaActivityOffline extends AppCompatActivity {
         Intent intent = getIntent();
         tvTest.setText(intent.getStringExtra("push_song"));
         final String str = intent.getStringExtra("push_url");
+
         if (str == null){
 
             mPlayers = MediaPlayer.create(this, R.raw.clairdelune);
 
         }else{
+
             try{
                 mPlayers.setDataSource(str);
                 mPlayers.prepare();
@@ -120,6 +156,7 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 Log.v("lost data", e.getMessage());
             }
         }
+
 
         alpha_ic = (Button) findViewById(R.id.alpha_ic);
         btn_backtohome = (Button) findViewById(R.id.backtohome);
@@ -134,10 +171,10 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 mPlayerAlpha.pause();
                 mPlayerOcean.reset();
                 mPlayerOcean.pause();
-                Intent redirect = new Intent(AlphaActivityOffline.this, MenuCircleActivity.class);
+                Intent redirect = new Intent(AlphaActivityOnline.this, MenuCircleActivity.class);
                 startActivity(redirect);
-            }
 
+            }
         });
 
         setting = (Button) findViewById(R.id.setting);
@@ -145,51 +182,43 @@ public class AlphaActivityOffline extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+
                 mPlayers.reset();
                 mPlayers.pause();
                 mPlayerAlpha.reset();
                 mPlayerAlpha.pause();
                 mPlayerOcean.reset();
                 mPlayerOcean.pause();
-                Intent redirect = new Intent(AlphaActivityOffline.this, AlphaSettingActivityOffline.class);
+                Intent redirect = new Intent(AlphaActivityOnline.this, AlphaSettingActivityOnline.class);
                 startActivity(redirect);
             }
+
         });
+
 
         time_setting = (Button) findViewById(R.id.time_setting);
         time_setting.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent redirect = new Intent(AlphaActivityOffline.this, SettingCountdown.class);
+
+                Intent redirect = new Intent(AlphaActivityOnline.this, SettingCountdown.class);
                 startActivityForResult(redirect,2);
             }
         });
 
-
-        list_songs_downloaded = (Button) findViewById(R.id.list_songs_downloaded);
-        list_songs_downloaded.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent redirect = new Intent(AlphaActivityOffline.this, ListSongOfflineDownloaded.class);
-                startActivityForResult(redirect,2);
-            }
-        });
-
-        no_wifi = (Button) findViewById(R.id.no_wifi);
-        no_wifi.setOnClickListener(new View.OnClickListener() {
+        off_line = (Button) findViewById(R.id.no_wifi);
+        off_line.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent redirect = new Intent(AlphaActivityOffline.this, AlphaActivityOnline.class);
+                Intent redirect = new Intent(AlphaActivityOnline.this, AlphaActivityOffline.class);
                 startActivityForResult(redirect,2);
 
-                Toast.makeText(AlphaActivityOffline.this, "Switched to online mode!",
+                Toast.makeText(AlphaActivityOnline.this, "Switched to offline mode!",
                         Toast.LENGTH_LONG).show();
             }
         });
-
 
         alpha_ic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,9 +233,11 @@ public class AlphaActivityOffline extends AppCompatActivity {
                     mPlayerAlpha.setVolume((float) 0.3, (float) 0.3);
                     mPlayerAlpha.setLooping(true);
                 }
+
                 isPlay = !isPlay; // reverse
             }
         });
+
 
         // piano button
         budhist_ic = (Button) findViewById(R.id.budhist_ic);
@@ -215,15 +246,13 @@ public class AlphaActivityOffline extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                System.out.println(str);
-
                 if (isPiano && isPiano_nd && isPiano_rd) {
-
                     v.setBackgroundResource(R.mipmap.volume_piano_max);
 
-                } else if (!isPiano && isPiano_nd && isPiano_rd) {
 
+                } else if (!isPiano && isPiano_nd && isPiano_rd) {
                     isPiano_nd = !isPiano_nd;
+
                     v.setBackgroundResource(R.mipmap.volume_piano_low);
                     mPlayers.start();
                     mPlayers.setVolume((float) 0.4, (float) 0.4);
@@ -232,6 +261,7 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 } else if (isPiano && !isPiano_nd && isPiano_rd) {
 
                     v.setBackgroundResource(R.mipmap.volume_piano_middle);
+
                     isPiano = !isPiano;
                     isPiano_rd = !isPiano_rd;
                     mPlayers.start();
@@ -248,6 +278,7 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 } else if (!isPiano && isPiano_nd && !isPiano_rd) {
                     v.setBackgroundResource(R.mipmap.budhist);
                     isPiano_rd = !isPiano_rd;
+
                     mPlayers.pause();
 
                 } else if (!isPiano && isPiano_nd && !isPiano_rd) {
@@ -266,8 +297,12 @@ public class AlphaActivityOffline extends AppCompatActivity {
         volume_ocean = (Button) findViewById(R.id.ocean_volume);
         volume_ocean.setOnClickListener(new View.OnClickListener() {
 
+            View a;
+
             @Override
             public void onClick(View v) {
+
+                mPlayerOcean.setLooping(true);
 
                 if (isOcean && isOcean_nd && isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_max);
@@ -299,7 +334,9 @@ public class AlphaActivityOffline extends AppCompatActivity {
                     v.setBackgroundResource(R.mipmap.volume_ocean_low);
                     mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 0.4, (float) 0.4);
+
                 }
+
                 isOcean = !isOcean;
             }
         });
@@ -315,20 +352,19 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 startStop();
             }
         });
-
     }
 
     private void startStop() {
 
-        if (status == TimerStatus.STOPPED) {
+        if (status == AlphaActivityOnline.TimerStatus.STOPPED) {
 
             setProgressBarValues();
-            status = TimerStatus.STARTED;
+            status = AlphaActivityOnline.TimerStatus.STARTED;
             startCountDownTimer();
             countdown_btn.setBackgroundResource(R.drawable.buddhist_countdown);
 
         } else {
-            status = TimerStatus.STOPPED;
+            status = AlphaActivityOnline.TimerStatus.STOPPED;
             stopCountDownTimer();
             countdown_btn.setBackgroundResource(R.mipmap.countdownic);
         }
@@ -361,7 +397,7 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 // call to initialize the progress bar values
                 setProgressBarValues();
                 // changing the timer status to stopped
-                status = TimerStatus.STOPPED;
+                status = AlphaActivityOnline.TimerStatus.STOPPED;
 
                 Intent intent = getIntent();
                 setResult(RESULT_OK,intent);
@@ -400,10 +436,14 @@ public class AlphaActivityOffline extends AppCompatActivity {
         timeCountInMilliSeconds = intent.getLongExtra("minutes", 1) * 60 * 1000;
     }
 
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
+
             try {
                 timeCountInMilliSeconds = data.getLongExtra("minutes", 1) * 60 * 1000;
                 textViewTime.setText(hmsTimeFormatter(timeCountInMilliSeconds));
@@ -459,4 +499,24 @@ public class AlphaActivityOffline extends AppCompatActivity {
         mToastToShow.show();
         toastCountDown.start();
     }
+
+
+        ///    When test on mobile, turn on here -->
+
+//    public ArrayList<File> findSongs(File root) {
+//        ArrayList<File> a = new ArrayList<File>();
+//        File[] files = root.listFiles();
+//        for (File singleFile : files) {
+//            if (singleFile.isDirectory() && !singleFile.isHidden()) {
+//
+//                a.addAll(findSongs(singleFile));
+//
+//            } else {
+//                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")) {
+//                    a.add(singleFile);
+//                }
+//            }
+//        }
+//        return a;
+//    }
 }

@@ -24,29 +24,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Views.AlphaActivity"
+            android:name=".Views.AlphaActivityOnline"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Views.Loading"
+            android:name=".Views.LoadingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Views.AlphaSettingActivity"
+            android:name=".Views.AlphaSettingActivityOnline"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Views.CountdownActivity"
+            android:name=".Views.MenuCircleActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Views.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Views.SettingCountdownActivity"
+            android:name=".Views.SettingCountdown"
             android:screenOrientation="portrait" />
         <!-- <activity android:name=".Views.SliderActivity"></activity> -->
         <activity
             android:name=".Views.AlphaActivityOffline"
             android:screenOrientation="portrait" />
-        <activity android:name=".Views.AlphaSettingActivityOffiline" />
-        <activity android:name=".Views.ListSongOfflineActivity"></activity>
+        <activity android:name=".Views.AlphaSettingActivityOffline" />
+        <activity android:name=".Views.ListSongOfflineDownloaded" />
     </application>
 
 </manifest>
