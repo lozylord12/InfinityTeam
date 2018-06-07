@@ -10,8 +10,8 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/slide3_image"
+            android:layout_height="@dimen/slide3_image"
             android:src="@drawable/buddhist_building" />
         <TextView
             android:layout_width="wrap_content"
@@ -19,17 +19,21 @@
             android:text="@string/slide_3_title"
             android:textColor="@android:color/white"
             android:paddingTop="30dp"
-            android:textSize="35dp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/slide3_text_size_1"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
+            android:paddingLeft="@dimen/slide3_text_view_padding"
+            android:paddingRight="@dimen/slide3_text_view_padding"
             android:text="@string/slide_3_desc"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="16dp" />
+            android:textSize="@dimen/slide3_text_size_2"
+            android:fontFamily="sans-serif"
+            />
     </LinearLayout>
 </RelativeLayout>

@@ -35,8 +35,8 @@
 
                     <Button
                         android:id="@+id/backtohome"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/activity_main_icon_button_back_width"
+                        android:layout_height="@dimen/activity_main_icon_button_back_height"
                         android:background="@mipmap/backarrow" />
 
                 </LinearLayout>
@@ -56,15 +56,15 @@
 
                     <Button
                         android:id="@+id/setting"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="@dimen/activity_main_icon_button_top_width"
+                        android:layout_height="@dimen/activity_main_icon_button_top_height"
                         android:background="@mipmap/setting_ic" />
 
 
                     <Button
                         android:id="@+id/time_setting"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="@dimen/activity_main_icon_button_top_width"
+                        android:layout_height="@dimen/activity_main_icon_button_top_height"
                         android:layout_marginStart="10dp"
                         android:layout_toRightOf="@+id/setting"
                         android:background="@mipmap/time_setting_ic" />
@@ -91,22 +91,22 @@
 
             <Button
                 android:id="@+id/alpha_ic"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+                android:layout_width="@dimen/activity_main_icon_button_width"
+                android:layout_height="@dimen/activity_main_icon_button_height"
                 android:background="@mipmap/alphaic"
                 />
 
 
             <Button
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="@dimen/activity_main_icon_button_space_width"
+                android:layout_height="@dimen/activity_main_icon_button_space_height"
                 android:background="@drawable/backgroundcyan" />
 
             <Button
                 android:id="@+id/budhist_ic"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+                android:layout_width="@dimen/activity_main_icon_button_width"
+                android:layout_height="@dimen/activity_main_icon_button_height"
                 android:background="@mipmap/budhist" />
 
         </LinearLayout>
@@ -121,21 +121,21 @@
 
             <Button
                 android:id="@+id/ocean_volume"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+                android:layout_width="@dimen/activity_main_icon_button_width"
+                android:layout_height="@dimen/activity_main_icon_button_height"
                 android:background="@mipmap/wavevolumeic" />
 
 
             <Button
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="@dimen/activity_main_icon_button_space_width"
+                android:layout_height="@dimen/activity_main_icon_button_space_height"
                 android:background="@drawable/backgroundcyan" />
 
             <Button
                 android:id="@+id/countdown_btn"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+                android:layout_width="@dimen/activity_main_icon_button_width"
+                android:layout_height="@dimen/activity_main_icon_button_height"
                 android:background="@mipmap/countdownic" />
 
         </LinearLayout>
@@ -152,8 +152,8 @@
             >
 
             <ImageView
-                android:layout_width="450dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/activity_main_soundwaves_width"
+                android:layout_height="@dimen/activity_main_soundwaves_height"
                 android:background="@mipmap/soundwaves_demo" />
 
         </LinearLayout>
@@ -169,7 +169,7 @@
             <TextView
                 android:id="@+id/tvTest_alpha"
                 android:layout_width="wrap_content"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/activity_main_padding_bottom"
                 android:layout_gravity="center"
                 android:textColor="@color/cyanBackground"
                 />
@@ -188,8 +188,8 @@
             <ProgressBar
                 android:id="@+id/progressBarCircle"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
+                android:layout_width="@dimen/activity_main_pgBar_width"
+                android:layout_height="@dimen/activity_main_pgBar_height"
                 android:layout_centerInParent="true"
                 android:background="@drawable/view_circle_fin"
                 android:indeterminate="false"

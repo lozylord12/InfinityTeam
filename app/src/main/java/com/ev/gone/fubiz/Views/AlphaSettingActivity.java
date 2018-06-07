@@ -38,7 +38,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
     ListViewAdapter data_adapter_test;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,19 +48,18 @@ public class AlphaSettingActivity extends AppCompatActivity {
 
 
         SongManager.getInstance().load();
-//z        mSongsName = SongManager.getInstance().getSongName();
+        // mSongsName = SongManager.getInstance().getSongName();
 
         final ListView lvsong = (ListView) findViewById(R.id.listview);
 
-     //   Songs a = new Songs("Noctune op.9 No.2",8,"dfjdhdhf");
-     //      mData.child("Song").push().setValue(a);
+        // Songs a = new Songs("Noctune op.9 No.2",8,"dfjdhdhf");
+        // mData.child("Song").push().setValue(a);
 
         ListSong = new ArrayList<String>();
         ListUrl = new ArrayList<String>();
 
         data_adapter_test = new ListViewAdapter(AlphaSettingActivity.this, ListSong);
         lvsong.setAdapter(data_adapter_test);
-
 
 
         alpha_btn = (View) findViewById(R.id.alpha_setting);
@@ -78,15 +76,19 @@ public class AlphaSettingActivity extends AppCompatActivity {
                         ListUrl.add(info.url);
                         data_adapter_test.notifyDataSetChanged();
                     }
+
                     @Override
                     public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                     }
+
                     @Override
                     public void onChildRemoved(DataSnapshot dataSnapshot) {
                     }
+
                     @Override
                     public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                     }
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
@@ -101,21 +103,21 @@ public class AlphaSettingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                if (position == 0){
+                if (position == 0) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(0).toString());
                     myIntent.putExtra("push_url", ListUrl.get(0));
                     startActivityForResult(myIntent, 0);
                 }
 
-                if (position == 1){
+                if (position == 1) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(1).toString());
                     myIntent.putExtra("push_url", ListUrl.get(1));
                     startActivityForResult(myIntent, 1);
                 }
 
-                if (position == 2){
+                if (position == 2) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(2).toString());
 
@@ -123,7 +125,7 @@ public class AlphaSettingActivity extends AppCompatActivity {
                     startActivityForResult(myIntent, 2);
                 }
 
-                if (position == 3){
+                if (position == 3) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(4).toString());
 
@@ -131,7 +133,7 @@ public class AlphaSettingActivity extends AppCompatActivity {
                     startActivityForResult(myIntent, 3);
                 }
 
-                if (position == 4){
+                if (position == 4) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(4).toString());
 
@@ -139,7 +141,7 @@ public class AlphaSettingActivity extends AppCompatActivity {
                     startActivityForResult(myIntent, 4);
                 }
 
-                if (position == 5){
+                if (position == 5) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(5).toString());
 
@@ -147,7 +149,7 @@ public class AlphaSettingActivity extends AppCompatActivity {
                     startActivityForResult(myIntent, 5);
                 }
 
-                if (position == 6){
+                if (position == 6) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(6).toString());
 
@@ -155,7 +157,7 @@ public class AlphaSettingActivity extends AppCompatActivity {
                     startActivityForResult(myIntent, 6);
                 }
 
-                if (position == 7){
+                if (position == 7) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(7).toString());
 
