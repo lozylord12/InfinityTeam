@@ -79,10 +79,6 @@ public class AlphaActivity extends AppCompatActivity {
     @BindView(R.id.textViewTime)
     TextView textViewTime;
 
-
-//    @BindView(R.id.btnSetting)
-//    Button btnSetting;
-
     //Objects and variables
     int status = AlphaActivity.TimerStatus.STOPPED;
     ObjectAnimator smoothAnimation;
@@ -95,7 +91,6 @@ public class AlphaActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
 
     private Toast mToastToShow;
-
 
 
     private TextView tvTest;
@@ -121,32 +116,36 @@ public class AlphaActivity extends AppCompatActivity {
         tvTest = findViewById(R.id.tvTest_alpha);
         mySongs = new ArrayList<File>();
 
-        final ArrayList<File> mySongs = findSongs(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC));
-        items = new String[mySongs.size()];
-
-        Intent intent = getIntent();
-
-        tvTest.setText(intent.getStringExtra("push_song"));
 
 
-        final String str  = intent.getStringExtra("push_url");
-        this.mySongs = (ArrayList) intent.getParcelableArrayListExtra("song_list");
-        i =  intent.getIntExtra("pos", 0);
-        Uri uri = Uri.parse(mySongs.get(i).toString());
+        ///    When test on mobile, turn on here -->
 
-
-        if (str != null){
-            try{
-
-                mPlayers.setDataSource(str);
-                mPlayers.prepare();
-
-            }catch (IOException e){
-                Log.v("lost data", e.getMessage());
-            }
-        }else {
-            mPlayers = MediaPlayer.create(getApplicationContext(), uri);
-        }
+//        final ArrayList<File> mySongs = findSongs(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC));
+//        items = new String[mySongs.size()];
+//
+//        Intent intent = getIntent();
+//
+//        tvTest.setText(intent.getStringExtra("push_song"));
+//
+//
+//        final String str  = intent.getStringExtra("push_url");
+//        this.mySongs = (ArrayList) intent.getParcelableArrayListExtra("song_list");
+//        i =  intent.getIntExtra("pos", 0);
+//        Uri uri = Uri.parse(mySongs.get(i).toString());
+//
+//
+//        if (str != null){
+//            try{
+//
+//                mPlayers.setDataSource(str);
+//                mPlayers.prepare();
+//
+//            }catch (IOException e){
+//                Log.v("lost data", e.getMessage());
+//            }
+//        }else {
+//            mPlayers = MediaPlayer.create(getApplicationContext(), uri);
+//        }
 
 
         alpha_ic = (Button) findViewById(R.id.alpha_ic);
@@ -192,7 +191,6 @@ public class AlphaActivity extends AppCompatActivity {
 
 
 
-
         time_setting = (Button) findViewById(R.id.time_setting);
         time_setting.setOnClickListener(new View.OnClickListener() {
 
@@ -200,11 +198,7 @@ public class AlphaActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent redirect = new Intent(AlphaActivity.this, SettingCountdownActivity.class);
-//                timeCountInMilliSeconds
-//                stopCountDownTimer();
                 startActivityForResult(redirect,2);
-
-
             }
         });
 
@@ -213,19 +207,10 @@ public class AlphaActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
                 Intent redirect = new Intent(AlphaActivity.this, AlphaActivityOffline.class);
-//                timeCountInMilliSeconds
-//                stopCountDownTimer();
                 startActivityForResult(redirect,2);
-
-
             }
         });
-
-
-
-
 
         alpha_ic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,19 +314,13 @@ public class AlphaActivity extends AppCompatActivity {
 
                 } else if (isOcean && !isOcean_nd && isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_middle);
-//                  isOcean_nd = isOcean_nd;
                     isOcean = !isOcean;
                     isOcean_rd = !isOcean_rd;
-
-//                    mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 0.7, (float) 0.7);
 
                 } else if (isOcean && !isOcean_nd && !isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_max);
                     isOcean_nd = !isOcean_nd;
-//                isOcean_rd =!isOcean_rd;
-
-//                    mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 1.0, (float) 1.0);
 
                 } else if (!isOcean && isOcean_nd && !isOcean_rd) {
@@ -524,20 +503,23 @@ public class AlphaActivity extends AppCompatActivity {
         toastCountDown.start();
     }
 
-    public ArrayList<File> findSongs(File root) {
-        ArrayList<File> a = new ArrayList<File>();
-        File[] files = root.listFiles();
-        for (File singleFile : files) {
-            if (singleFile.isDirectory() && !singleFile.isHidden()) {
 
-                a.addAll(findSongs(singleFile));
+        ///    When test on mobile, turn on here -->
 
-            } else {
-                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")) {
-                    a.add(singleFile);
-                }
-            }
-        }
-        return a;
-    }
+//    public ArrayList<File> findSongs(File root) {
+//        ArrayList<File> a = new ArrayList<File>();
+//        File[] files = root.listFiles();
+//        for (File singleFile : files) {
+//            if (singleFile.isDirectory() && !singleFile.isHidden()) {
+//
+//                a.addAll(findSongs(singleFile));
+//
+//            } else {
+//                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")) {
+//                    a.add(singleFile);
+//                }
+//            }
+//        }
+//        return a;
+//    }
 }

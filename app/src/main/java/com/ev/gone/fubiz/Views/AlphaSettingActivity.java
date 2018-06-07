@@ -25,9 +25,6 @@ import java.util.ArrayList;
 
 public class AlphaSettingActivity extends AppCompatActivity {
 
-
-    String settimes[] = new String[]{"5 mins", "10 mins", "15 mins", "20 mins", "25 mins", "30 mins", "35 mins", "40 mins", "45 mins", "50 mins", "55 mins", "60 mins"};
-
     View alpha_btn;
     Button backto_alpha_main;
     DatabaseReference mData;
@@ -45,7 +42,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
 
         // mapping with data
         mData = FirebaseDatabase.getInstance().getReference();
-
 
         SongManager.getInstance().load();
         // mSongsName = SongManager.getInstance().getSongName();
@@ -68,7 +64,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 mData.child("Song").addChildEventListener(new ChildEventListener() {
-
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                         Songs info = dataSnapshot.getValue(Songs.class);
@@ -120,7 +115,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 if (position == 2) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(2).toString());
-
                     myIntent.putExtra("push_url", ListUrl.get(2));
                     startActivityForResult(myIntent, 2);
                 }
@@ -128,7 +122,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 if (position == 3) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(4).toString());
-
                     myIntent.putExtra("push_url", ListUrl.get(3));
                     startActivityForResult(myIntent, 3);
                 }
@@ -136,7 +129,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 if (position == 4) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(4).toString());
-
                     myIntent.putExtra("push_url", ListUrl.get(4));
                     startActivityForResult(myIntent, 4);
                 }
@@ -144,7 +136,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 if (position == 5) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(5).toString());
-
                     myIntent.putExtra("push_url", ListUrl.get(5));
                     startActivityForResult(myIntent, 5);
                 }
@@ -152,7 +143,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 if (position == 6) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(6).toString());
-
                     myIntent.putExtra("push_url", ListUrl.get(6));
                     startActivityForResult(myIntent, 6);
                 }
@@ -160,11 +150,9 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 if (position == 7) {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(7).toString());
-
                     myIntent.putExtra("push_url", ListUrl.get(7));
                     startActivityForResult(myIntent, 7);
                 }
-
             }
         });
 
@@ -175,11 +163,7 @@ public class AlphaSettingActivity extends AppCompatActivity {
 
                 Intent redirect_one = new Intent(AlphaSettingActivity.this, AlphaActivity.class);
                 startActivity(redirect_one);
-
-
             }
         });
-
-
     }
 }

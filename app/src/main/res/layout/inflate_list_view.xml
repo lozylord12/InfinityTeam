@@ -23,9 +23,10 @@
             android:layout_marginTop="10dp"
             android:text="Medium Text"
             android:autoSizeTextType="uniform"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeStepGranularity="2sp"
+            android:autoSizeMinTextSize="12dp"
+            android:autoSizeMaxTextSize="100dp"
+            android:autoSizeStepGranularity="2dp"
+            android:fontFamily="sans-serif"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white"/>
     </LinearLayout>

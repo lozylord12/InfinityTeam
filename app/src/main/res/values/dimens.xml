@@ -53,7 +53,7 @@
     <dimen name="slide1_text_size_2">15sp</dimen>
 
 
-    <dimen name="slide2_image_height">400dp</dimen>
+    <dimen name="slide2_image_height">350dp</dimen>
     <dimen name="slide2_text_size_1">30sp</dimen>
     <dimen name="slide2_text_size_2">16sp</dimen>
     <dimen name="slide2_text_view_padding">40dp</dimen>

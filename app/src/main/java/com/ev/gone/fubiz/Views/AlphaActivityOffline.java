@@ -50,7 +50,6 @@ public class AlphaActivityOffline extends AppCompatActivity {
     boolean isOcean_nd = true;
     boolean isOcean_rd = true;
 
-
     Button budhist_ic;
     boolean isPiano = false;
     boolean isPiano_nd = true;
@@ -60,7 +59,6 @@ public class AlphaActivityOffline extends AppCompatActivity {
 
     Boolean wifiConnected;
     Boolean mobileConnected;
-
 
     //extra classes
     private static class TimerStatus {
@@ -74,40 +72,24 @@ public class AlphaActivityOffline extends AppCompatActivity {
     @BindView(R.id.textViewTime)
     TextView textViewTime;
 
-
-//    @BindView(R.id.btnSetting)
-//    Button btnSetting;
-
     //Objects and variables
     int status = TimerStatus.STOPPED;
     ObjectAnimator smoothAnimation;
-
 
     @BindView(R.id.countdown_btn)
     Button countdown_btn;
 
     private long timeCountInMilliSeconds;
     private CountDownTimer countDownTimer;
-
     private Toast mToastToShow;
-
-
-
     private TextView tvTest;
-
     MediaPlayer mPlayerOcean = new MediaPlayer();
     MediaPlayer mPlayerAlpha = new MediaPlayer();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alpha_offline);
-
-
-
-
-
 
 
 //        on_line = (Button) findViewById(R.id.on_wifi);
@@ -132,13 +114,9 @@ public class AlphaActivityOffline extends AppCompatActivity {
 
 
         tvTest = findViewById(R.id.tvTest_alpha);
-
         Intent intent = getIntent();
-
         tvTest.setText(intent.getStringExtra("push_song"));
-
         final String str = intent.getStringExtra("push_url");
-
         if (str == null){
 
             mPlayers = MediaPlayer.create(this, R.raw.clairdelune);
@@ -153,13 +131,10 @@ public class AlphaActivityOffline extends AppCompatActivity {
             }catch (IOException e){
                 Log.v("lost data", e.getMessage());
             }
-
         }
 
 
         alpha_ic = (Button) findViewById(R.id.alpha_ic);
-
-
         btn_backtohome = (Button) findViewById(R.id.backtohome);
         btn_backtohome.setOnClickListener(new View.OnClickListener() {
 
@@ -172,7 +147,6 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 mPlayerAlpha.pause();
                 mPlayerOcean.reset();
                 mPlayerOcean.pause();
-
                 Intent redirect = new Intent(AlphaActivityOffline.this, MainActivity.class);
                 startActivity(redirect);
 
@@ -199,18 +173,13 @@ public class AlphaActivityOffline extends AppCompatActivity {
         });
 
 
-
-
         time_setting = (Button) findViewById(R.id.time_setting);
         time_setting.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
                 Intent redirect = new Intent(AlphaActivityOffline.this, ListSongOfflineActivity.class);
                 startActivityForResult(redirect,2);
-
-
             }
         });
 
@@ -219,16 +188,10 @@ public class AlphaActivityOffline extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
                 Intent redirect = new Intent(AlphaActivityOffline.this, AlphaActivity.class);
-//                timeCountInMilliSeconds
-//                stopCountDownTimer();
                 startActivityForResult(redirect,2);
-
             }
         });
-
-
 
 
         alpha_ic.setOnClickListener(new View.OnClickListener() {
@@ -244,11 +207,9 @@ public class AlphaActivityOffline extends AppCompatActivity {
                     mPlayerAlpha.setVolume((float) 0.3, (float) 0.3);
                     mPlayerAlpha.setLooping(true);
                 }
-
                 isPlay = !isPlay; // reverse
             }
         });
-
 
         // piano button
         budhist_ic = (Button) findViewById(R.id.budhist_ic);
@@ -260,12 +221,12 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 System.out.println(str);
 
                 if (isPiano && isPiano_nd && isPiano_rd) {
+
                     v.setBackgroundResource(R.mipmap.volume_piano_max);
 
-
                 } else if (!isPiano && isPiano_nd && isPiano_rd) {
-                    isPiano_nd = !isPiano_nd;
 
+                    isPiano_nd = !isPiano_nd;
                     v.setBackgroundResource(R.mipmap.volume_piano_low);
                     mPlayers.start();
                     mPlayers.setVolume((float) 0.4, (float) 0.4);
@@ -274,7 +235,6 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 } else if (isPiano && !isPiano_nd && isPiano_rd) {
 
                     v.setBackgroundResource(R.mipmap.volume_piano_middle);
-
                     isPiano = !isPiano;
                     isPiano_rd = !isPiano_rd;
                     mPlayers.start();
@@ -291,7 +251,6 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 } else if (!isPiano && isPiano_nd && !isPiano_rd) {
                     v.setBackgroundResource(R.mipmap.budhist);
                     isPiano_rd = !isPiano_rd;
-
                     mPlayers.pause();
 
                 } else if (!isPiano && isPiano_nd && !isPiano_rd) {
@@ -310,13 +269,8 @@ public class AlphaActivityOffline extends AppCompatActivity {
         volume_ocean = (Button) findViewById(R.id.ocean_volume);
         volume_ocean.setOnClickListener(new View.OnClickListener() {
 
-            View a;
-
             @Override
             public void onClick(View v) {
-
-               /* Intent myintent = new Intent(AlphaActivity.this, CountdownActivity.class);
-                startActivityForResult(myintent, 1001);*/
 
                 if (isOcean && isOcean_nd && isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_max);
@@ -325,46 +279,32 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 } else if (!isOcean && isOcean_nd && isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_low);
                     isOcean_nd = !isOcean_nd;
-
                     mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 0.4, (float) 0.4);
 
-
                 } else if (isOcean && !isOcean_nd && isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_middle);
-//                  isOcean_nd = isOcean_nd;
                     isOcean = !isOcean;
                     isOcean_rd = !isOcean_rd;
-
-//                    mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 0.7, (float) 0.7);
 
                 } else if (isOcean && !isOcean_nd && !isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_max);
                     isOcean_nd = !isOcean_nd;
-//                isOcean_rd =!isOcean_rd;
-
-//                    mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 1.0, (float) 1.0);
 
                 } else if (!isOcean && isOcean_nd && !isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_mute);
                     isOcean_rd = !isOcean_rd;
-
                     mPlayerOcean.pause();
-
 
                 } else if (isOcean && isOcean_nd && isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_low);
                     mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 0.4, (float) 0.4);
-
                 }
-
                 isOcean = !isOcean;
-
             }
-
         });
 
         ButterKnife.bind(this);
@@ -464,15 +404,10 @@ public class AlphaActivityOffline extends AppCompatActivity {
     }
 
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
-//            if (data == null) {
-//                timeCountInMilliSeconds = 0;
-//            } else {
             try {
                 timeCountInMilliSeconds = data.getLongExtra("minutes", 1) * 60 * 1000;
                 textViewTime.setText(hmsTimeFormatter(timeCountInMilliSeconds));
@@ -528,8 +463,4 @@ public class AlphaActivityOffline extends AppCompatActivity {
         mToastToShow.show();
         toastCountDown.start();
     }
-
-
-
 }
-
