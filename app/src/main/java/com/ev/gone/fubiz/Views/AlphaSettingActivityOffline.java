@@ -47,14 +47,14 @@ public class AlphaSettingActivityOffline extends AppCompatActivity {
 
         lv1 = (ListView) findViewById(R.id.lv);
         ListSong = new ArrayList<String>();
-        ListSong.add("Clair de Lune");
-        ListSong.add("Crystal Steel Collaboration");
-        ListSong.add("Liebestraum");
-        ListSong.add("Moonlight");
-        ListSong.add("Piano Sonata in F major");
-        ListSong.add("Noctune op.9 No.2");
-        ListSong.add("Piano Sonata in B major");
-        ListSong.add("Piano Sonata in G major");
+        ListSong.add("Clair de Lune"); // 0
+        ListSong.add("Crystal Steel Collaboration"); // 1
+        ListSong.add("Liebestraum"); // 2
+        ListSong.add("Moonlight");// 3
+        ListSong.add("Piano Sonata in F major"); // 4
+        ListSong.add("Noctune op.9 No.2"); // 5
+        ListSong.add("Piano Sonata in B major"); // 6
+        ListSong.add("Piano Sonata in G major"); // 7
 
 
         alpha_btn = (View) findViewById(R.id.alpha_setting);
@@ -172,6 +172,26 @@ public class AlphaSettingActivityOffline extends AppCompatActivity {
                 }
                 if (i == 5) {
                     if (isConnectingToInternet()) {
+                        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/fubiz-1210c.appspot.com/o/media%2FNocturne%20op.9%20No.2.mp3?alt=media&token=7cbcd860-48c6-417c-b716-4634485ab3d8");
+                        DownloadManager downloadManager7 = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                        DownloadManager.Request request = new DownloadManager.Request(uri);
+
+                        //Setting title of request
+                        request.setTitle("Noctune op.9 No.2");
+
+                        //Setting description of request
+                        request.setDescription("Downloading...");
+                        check("Noctune-op.9-No.2.mp3");
+                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_MUSIC + "/" + "Music Fubiz", "Noctune-op.9-No.2.mp3");
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        Long reference = downloadManager7.enqueue(request);
+                    } else
+                        Toast.makeText(AlphaSettingActivityOffline.this, "Oops!! There is no internet connection. Please enable internet connection and try again.", Toast.LENGTH_SHORT).show();
+
+
+                }
+                if (i == 6) {
+                    if (isConnectingToInternet()) {
                         Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/fubiz-1210c.appspot.com/o/media%2FPiano%20Sonata%20in%20B%20flat%20major.mp3?alt=media&token=18a3c546-386d-40cc-901f-2b74bfa3e9c8");
                         DownloadManager downloadManager5 = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
                         DownloadManager.Request request = new DownloadManager.Request(uri);
@@ -190,7 +210,7 @@ public class AlphaSettingActivityOffline extends AppCompatActivity {
 
 
                 }
-                if (i == 6) {
+                if (i == 7) {
                     if (isConnectingToInternet()) {
                         Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/fubiz-1210c.appspot.com/o/media%2FPiano%20Sonata%20in%20G%20major.mp3?alt=media&token=b5bd6039-6c0b-4861-baff-6b0157ae8baf");
                         DownloadManager downloadManager6 = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
@@ -210,26 +230,7 @@ public class AlphaSettingActivityOffline extends AppCompatActivity {
 
 
                 }
-                if (i == 7) {
-                    if (isConnectingToInternet()) {
-                        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/fubiz-1210c.appspot.com/o/media%2FNocturne%20op.9%20No.2.mp3?alt=media&token=7cbcd860-48c6-417c-b716-4634485ab3d8");
-                        DownloadManager downloadManager7 = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-                        DownloadManager.Request request = new DownloadManager.Request(uri);
 
-                        //Setting title of request
-                        request.setTitle("Noctune op.9 No.2");
-
-                        //Setting description of request
-                        request.setDescription("Downloading...");
-                        check("Noctune-op.9-No.2.mp3");
-                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_MUSIC + "/" + "Music Fubiz", "Noctune-op.9-No.2.mp3");
-                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                        Long reference = downloadManager7.enqueue(request);
-                    } else
-                        Toast.makeText(AlphaSettingActivityOffline.this, "Oops!! There is no internet connection. Please enable internet connection and try again.", Toast.LENGTH_SHORT).show();
-
-
-                }
 
             }
         });
