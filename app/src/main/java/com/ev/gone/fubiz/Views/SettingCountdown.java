@@ -57,7 +57,7 @@ public class SettingCountdown extends AppCompatActivity {
 
                     minutes = npHours.getValue() * 60 + npMinutes.getValue();
                     intent.putExtra("minutes", minutes);
-                    startActivity(intent);
+                    setResult(2, intent);
                     finish();
                 } catch (Exception ex) {
                     Toast.makeText(SettingCountdown.this, "Please input here a minutes", Toast.LENGTH_SHORT).show();
@@ -73,7 +73,6 @@ public class SettingCountdown extends AppCompatActivity {
 
                 Intent redirect_one = new Intent(SettingCountdown.this, AlphaActivityOnline.class);
                 startActivity(redirect_one);
-
 
             }
         });

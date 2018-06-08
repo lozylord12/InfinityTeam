@@ -184,7 +184,7 @@ public class AlphaActivityOffline extends AppCompatActivity {
             public void onClick(View view) {
                 Intent redirect = new Intent(AlphaActivityOffline.this, AlphaActivityOnline.class);
                 startActivityForResult(redirect,2);
-
+                finish();
                 Toast.makeText(AlphaActivityOffline.this, "Switched to online mode!",
                         Toast.LENGTH_LONG).show();
             }
@@ -358,6 +358,12 @@ public class AlphaActivityOffline extends AppCompatActivity {
                 mPlayerAlpha.pause();
                 mPlayerOcean.reset();
                 mPlayerOcean.pause();
+
+                Intent startMain = new Intent(Intent.ACTION_MAIN);
+                startMain.addCategory(Intent.CATEGORY_HOME);
+                startActivity(startMain);
+                finish();
+
                 // call to initialize the progress bar values
                 setProgressBarValues();
                 // changing the timer status to stopped

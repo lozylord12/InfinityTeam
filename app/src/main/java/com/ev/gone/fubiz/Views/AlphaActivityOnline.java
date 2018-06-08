@@ -214,7 +214,7 @@ public class AlphaActivityOnline extends AppCompatActivity {
             public void onClick(View view) {
                 Intent redirect = new Intent(AlphaActivityOnline.this, AlphaActivityOffline.class);
                 startActivityForResult(redirect,2);
-
+                finish();
                 Toast.makeText(AlphaActivityOnline.this, "Switched to offline mode!",
                         Toast.LENGTH_LONG).show();
             }
@@ -394,10 +394,17 @@ public class AlphaActivityOnline extends AppCompatActivity {
                 mPlayerAlpha.pause();
                 mPlayerOcean.reset();
                 mPlayerOcean.pause();
+
+                Intent startMain = new Intent(Intent.ACTION_MAIN);
+                startMain.addCategory(Intent.CATEGORY_HOME);
+                startActivity(startMain);
+                finish();
+
                 // call to initialize the progress bar values
                 setProgressBarValues();
                 // changing the timer status to stopped
                 status = AlphaActivityOnline.TimerStatus.STOPPED;
+
 
                 Intent intent = getIntent();
                 setResult(RESULT_OK,intent);
@@ -443,7 +450,6 @@ public class AlphaActivityOnline extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
-
             try {
                 timeCountInMilliSeconds = data.getLongExtra("minutes", 1) * 60 * 1000;
                 textViewTime.setText(hmsTimeFormatter(timeCountInMilliSeconds));
