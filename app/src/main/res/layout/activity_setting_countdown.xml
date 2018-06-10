@@ -36,8 +36,6 @@
     </LinearLayout>
 
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -48,16 +46,48 @@
 
         <NumberPicker
             android:id="@+id/npHours"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content">
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:theme="@style/DefaultNumberPickerTheme"
+            >
+
         </NumberPicker>
+
+        <TextView
+            android:id="@+id/hours_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/npHours"
+            android:text="hours"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            />
 
         <NumberPicker
             android:id="@+id/npMinutes"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/npHours">
+            android:layout_toRightOf="@+id/hours_tv"
+            android:textColor="@color/white"
+            android:theme="@style/DefaultNumberPickerTheme"
+            >
+
         </NumberPicker>
+
+        <TextView
+            android:id="@+id/minutes_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/npMinutes"
+            android:text="min"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            />
 
     </LinearLayout>
 

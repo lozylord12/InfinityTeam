@@ -1,6 +1,7 @@
 package com.ev.gone.fubiz.Views;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -41,7 +42,6 @@ public class SettingCountdown extends AppCompatActivity {
         npHours.setMaxValue(12);
         npHours.setMinValue(0);
         npHours.setWrapSelectorWheel(false);
-
 
         //Set values picker minutes
         npMinutes.setMaxValue(60);
